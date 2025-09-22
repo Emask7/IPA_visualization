@@ -62,18 +62,21 @@ volcano_wrapper <- function(dat, plot_title, sub_title, x_limits, y_limits, cap,
                         max.overlaps = 12, labSize = 4)
   
   if(!is.null(file_name)){
-      if(!file.exists("Output/")) dir.create("Output/")
-      if(!file.exists("Output/Volcano_plots/")) dir.create("Output/Volcano_plots/")
+      if(!file.exists("Volcano_plots/")) dir.create("Volcano_plots/")
 
-      ggsave(stri_join("Output/Volcano_plots/", file_name, ".png"),
+      ggsave(stri_join("Volcano_plots/", file_name, ".png"),
              units = "px", width = w, height = h, dpi = 300)
   }
   vp
 }
 
-volcano_wrapper(PL23, "Genes Downstream of IFNG", "PL2-3 + 2DG vs PL2-3", x_limits = c(-10, 5))
-volcano_wrapper(MRLlpr, "Genes Downstream of IFNG", "AM14 MRL/lpr: 2DG vs Control", x_limits = c(-2, 2))
-volcano_wrapper(R848, "Genes Downstream of IFNG", "R848 + 2DG vs R848")
-volcano_wrapper(NP, "Genes Downstream of IFNG", "NP + 2DG vs NP")
+volcano_wrapper(PL23, "Genes Downstream of IFNG", "PL2-3 + 2DG vs PL2-3", x_limits = c(-10, 5),
+                file_name = "IFNG_PL23")
+volcano_wrapper(MRLlpr, "Genes Downstream of IFNG", "AM14 MRL/lpr: 2DG vs Control", x_limits = c(-2, 2),
+                file_name = "IFNG_AM14MRLlpr")
+volcano_wrapper(R848, "Genes Downstream of IFNG", "R848 + 2DG vs R848",
+                file_name = "IFNG_R848")
+volcano_wrapper(NP, "Genes Downstream of IFNG", "NP + 2DG vs NP",
+                file_name = "IFNG_NP")
 
   
